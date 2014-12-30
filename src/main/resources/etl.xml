@@ -1,0 +1,21 @@
+<!DOCTYPE etl SYSTEM "http://scriptella.javaforge.com/dtd/etl.dtd">
+<etl>
+    <description>
+           test script
+    </description>
+                    <connection id="in" driver="scriptella.driver.mysql.Driver" url="jdbc:mysql://localhost:3306/seerdev" user="seerdev" password="seerdev">
+                    </connection>
+
+                     <connection id="out" driver="scriptella.driver.cassandra.Driver" url="nodes=localhost;keyspace=kspace" user="" password=""> 
+                    nodes=localhost
+                    keyspace=kspace
+                    </connection>
+
+    <query connection-id="in">
+            SELECT * from users;
+            <query connection-id="out">
+                    insert into newusers(uid,uname,uemail) values(?uid,?uname,?uemail);
+                    <!-- update newusers set uemail=?uemail,uname=?uname where uid=?uid; -->
+            </query>
+    </query>
+</etl>
