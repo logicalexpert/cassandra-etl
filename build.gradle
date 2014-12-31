@@ -21,7 +21,7 @@ dependencies{
 task generatePom << {
     pom {
         project {
-            inceptionYear '2008'
+            inceptionYear '2015'
             licenses {
                 license {
                     name 'The Apache Software License, Version 2.0'
@@ -30,5 +30,5 @@ task generatePom << {
                 }
             }
         }
-    }.writeTo("/pom.xml")
+    }.writeTo("pom.xml")
 }
